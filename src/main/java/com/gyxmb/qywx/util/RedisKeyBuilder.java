@@ -8,12 +8,12 @@ package com.gyxmb.qywx.util;
 public class RedisKeyBuilder {
 
     /**
-     * 遇见应用的ACCESSTOKEN
+     * 靠近应用的ACCESSTOKEN
      */
-    private static final String ACCESS_TOKEN_YUJIAN = "qywx:gyxmb:accesstoken:yujian";
+    private static final String ACCESS_TOKEN_KAOJIN = "qywx:gyxmb:accesstoken:kaojin";
 
 
-    public static String getAccessTokenYujian() {
-        return ACCESS_TOKEN_YUJIAN;
+    public static String getAccessTokenKaojin() {
+        return ACCESS_TOKEN_KAOJIN;
     }
 }

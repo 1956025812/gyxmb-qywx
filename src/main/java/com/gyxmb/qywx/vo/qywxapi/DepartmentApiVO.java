@@ -1,6 +1,5 @@
 package com.gyxmb.qywx.vo.qywxapi;
 
-import com.gyxmb.qywx.entity.Department;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -22,25 +21,5 @@ public class DepartmentApiVO implements Serializable {
     private Integer parentId;
     private Integer order;
 
-
-    /**
-     * DepartmentApiVO转换为Department
-     *
-     * @param departmentApiVO
-     * @return Department
-     */
-    public Department toDepartment(DepartmentApiVO departmentApiVO) {
-        if (null == departmentApiVO) {
-            return null;
-        }
-
-        Department department = new Department();
-        department.setQywxDeptId(id);
-        department.setDeptNameCn(name);
-        department.setDeptNameEn(nameEn);
-        department.setParentDetpId(parentId);
-        department.setOrder(order);
-        return department;
-    }
 
 }

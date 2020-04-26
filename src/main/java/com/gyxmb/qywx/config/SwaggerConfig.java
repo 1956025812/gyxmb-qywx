@@ -23,7 +23,7 @@ public class SwaggerConfig
 		return new Docket(DocumentationType.SWAGGER_2)
 				.pathMapping("/")
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.gyxmb.qywx.web"))
+				.apis(RequestHandlerSelectors.basePackage("com.gyxmb.qywx"))
 				.paths(PathSelectors.any())
 				.build().apiInfo(new ApiInfoBuilder()
 						.title("公益项目部")

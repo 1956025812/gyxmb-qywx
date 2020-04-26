@@ -30,16 +30,16 @@ public class QywxApiServiceImpl implements QywxApiService {
     @Value("${qywx.zhenai.corpid}")
     private String qywxZhenaiCorpid;
 
-    @Value("${qywx.zhenai.corpsecret.gyxmb.yuJian}")
-    private String corpsecretYuJian;
+    @Value("${qywx.zhenai.corpsecret.gyxmb.kaojin}")
+    private String corpsecretKaojin;
 
     @Autowired
     private RedisUtil redisUtil;
 
 
     @Override
-    public String acquireYujianAccessToken() {
-        return this.commonAcquireAccessToken(RedisKeyBuilder.getAccessTokenYujian(), this.qywxZhenaiCorpid, this.corpsecretYuJian);
+    public String acquireKaojinAccessToken() {
+        return this.commonAcquireAccessToken(RedisKeyBuilder.getAccessTokenKaojin(), this.qywxZhenaiCorpid, this.corpsecretKaojin);
     }
 
 
@@ -47,9 +47,10 @@ public class QywxApiServiceImpl implements QywxApiService {
     public List<DepartmentApiVO> selectDepartmentList(Integer deptId) {
         log.info("查询部门ID为：{} 的部门及其子部门列表", deptId);
 
-        String url = String.format(QywxUrlEnum.GET_DEPARTMENT_LIST.getKey(), this.acquireYujianAccessToken(), deptId);
+        String url = String.format(QywxUrlEnum.GET_DEPARTMENT_LIST.getKey(), this.acquireKaojinAccessToken(), deptId);
         String result = HttpUtil.get(url);
         log.info("获取部门及其子部门列表返回的调用结果为：{}", result);
+        result = result.replaceAll("name_en", "nameEn").replaceAll("parentid", "parentId");
         DepartmentApiResultVO departmentApiResultVO = JSONUtil.toBean(result, DepartmentApiResultVO.class);
         if (null == departmentApiResultVO || !QywxCodeEnum.SUCCESS.getKey().equals(departmentApiResultVO.getErrcode())) {
             log.error("获取部门及其子部门列表失败，参数为：[deptId= {}], 失败信息为：{}", deptId, QywxCodeEnum.acquireValue(departmentApiResultVO.getErrcode()));
@@ -77,7 +78,7 @@ public class QywxApiServiceImpl implements QywxApiService {
         }
 
         accesstoken = this.acquireAccessToken(corpid, corpsecret);
-        this.redisUtil.setString(RedisKeyBuilder.getAccessTokenYujian(), accesstoken, 7200);
+        this.redisUtil.setString(RedisKeyBuilder.getAccessTokenKaojin(), accesstoken, 7200);
 
         return accesstoken;
     }

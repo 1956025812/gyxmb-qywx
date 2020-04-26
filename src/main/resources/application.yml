@@ -8,15 +8,11 @@ spring:
     active: dev
 
 
-# 日志级别
 logging:
   level:
     com.yss.shopping: debug
 
 
-# mybtais-plus
-mybatis-plus:
-  mapper-locations: classpath*:mapper/**/*Mapper.xml
 
 
 

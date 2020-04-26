@@ -12,11 +12,11 @@ import java.util.List;
 public interface QywxApiService {
 
     /**
-     * 获取遇见应用的ACCESS_TOKEN
+     * 获取靠近应用的ACCESS_TOKEN
      *
      * @return ACCESS_TOKEN
      */
-    String acquireYujianAccessToken();
+    String acquireKaojinAccessToken();
 
 
     /**

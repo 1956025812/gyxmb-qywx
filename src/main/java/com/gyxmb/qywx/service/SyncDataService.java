@@ -1,7 +1,5 @@
 package com.gyxmb.qywx.service;
 
-import com.gyxmb.qywx.vo.common.ResultVO;
-
 /**
  * <p>
  * 从企业微信同步数据到数据库SERVICE接口

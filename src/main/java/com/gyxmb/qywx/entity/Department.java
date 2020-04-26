@@ -1,23 +1,20 @@
 package com.gyxmb.qywx.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-
-import java.time.LocalDateTime;
-import java.io.Serializable;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 /**
  * <p>
- * 部门
+ * 企业微信部门表
  * </p>
  *
  * @author DuXueBo
- * @since 2020-04-12
+ * @since 2020-04-26
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -25,30 +22,32 @@ import lombok.experimental.Accessors;
 @TableName("t_department")
 public class Department implements Serializable {
 
-    private static final long serialVersionUID = 8467933863780148992L;
-
-    @TableId(value = "id")
-    private Long id;
+    private static final long serialVersionUID = 1L;
 
     /**
-     * 部门中文名称
+     * 部门id
      */
-    private String name;
+    private Integer id;
 
     /**
-     * 部门英文名称
+     * 部门名称
      */
-    private String nameEn;
+    private String deptNameCn;
 
     /**
-     * 企业微信父部门ID，根部门为1
+     * 英文名称
+     */
+    private String deptNameEn;
+
+    /**
+     * 父亲部门id。根部门为1
      */
     private Integer parentId;
 
     /**
      * 在父部门中的次序值。order值大的排序靠前。值范围是[0, 2^32)
      */
-    private Integer departmentorder;
+    private Integer deptOrder;
 
     /**
      * 创建时间
