@@ -24,7 +24,7 @@ import java.util.List;
 @Api(tags = "部门控制类")
 @RestController
 @RequestMapping("/department")
-public class DepartmentController {
+public class DepartmentController extends BaseController {
 
     @Resource
     private DepartmentService departmentService;

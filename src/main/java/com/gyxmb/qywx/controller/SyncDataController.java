@@ -21,7 +21,7 @@ import javax.annotation.Resource;
 @Api(tags = "同步数据控制类")
 @RequestMapping("/sync")
 @RestController
-public class SyncDataController {
+public class SyncDataController extends BaseController {
 
     @Resource
     private SyncDataService syncDataService;
