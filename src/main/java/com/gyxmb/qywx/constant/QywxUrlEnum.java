@@ -16,6 +16,11 @@ public enum QywxUrlEnum {
      * 获取部门及其子部门列表， id:部门ID
      */
     GET_DEPARTMENT_LIST("https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token=%s&id=%s", "获取部门及其子部门列表"),
+
+    /**
+     * 获取客户详情，external_userid: 外部联系人ID
+     */
+    GET_EXTERNAL_USER_INFO("https://qyapi.weixin.qq.com/cgi-bin/externalcontact/get?access_token=%s&external_userid=%s", "获取客户详情"),
     ;
 
     private String key;

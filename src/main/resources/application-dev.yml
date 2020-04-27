@@ -39,5 +39,11 @@ qywx:
   zhenai:
     corpid: ww9edcd0d70266445f
     corpsecret:
-      gyxmb:
+      # 通讯录
+      txl: SAtF5crlTSUD2lkebu-hsptS_kw6b9AHOX7jJUzT9Y8
+      # 客户联系
+      khlx: xuQH2o-SfTa1L2xyRRdKvuzuX5khHq2Xkb41poAbq0c
+      # 应用
+      app:
+        # 靠近
         kaojin: KsyeZQT4i1Bdc7CdBbOHbwKVcAj1DiTBfl4PS9ysH9k

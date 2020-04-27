@@ -2,11 +2,14 @@ package com.gyxmb.qywx.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gyxmb.qywx.service.CallbackService;
+import com.gyxmb.qywx.service.QywxApiService;
 import com.gyxmb.qywx.vo.qywxapi.ChangeExternalChatApiVO;
 import com.gyxmb.qywx.vo.qywxapi.ChangeExternalContactApiVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -20,11 +23,14 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class CallbackServiceImpl implements CallbackService {
 
+    @Resource
+    private QywxApiService qywxApiService;
 
     @Async
     @Override
     public void handleAddExternalContact(ChangeExternalContactApiVO changeExternalContactApiVO) {
         log.info("处理添加外部联系人事件回调，参数为：{}", JSONObject.toJSONString(changeExternalContactApiVO));
+        this.qywxApiService.selectExternalUserInfo(changeExternalContactApiVO.getExternalUserID());
     }
 
 
