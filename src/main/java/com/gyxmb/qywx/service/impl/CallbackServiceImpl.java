@@ -2,8 +2,8 @@ package com.gyxmb.qywx.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.gyxmb.qywx.service.CallbackService;
-import com.gyxmb.qywx.vo.qywxapi.ChangeExternalChatReq;
-import com.gyxmb.qywx.vo.qywxapi.ChangeExternalContactReq;
+import com.gyxmb.qywx.vo.qywxapi.ChangeExternalChatApiVO;
+import com.gyxmb.qywx.vo.qywxapi.ChangeExternalContactApiVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -23,29 +23,29 @@ public class CallbackServiceImpl implements CallbackService {
 
     @Async
     @Override
-    public void handleAddExternalContact(ChangeExternalContactReq changeExternalContactReq) {
-        log.info("处理添加外部联系人事件回调，参数为：{}", JSONObject.toJSONString(changeExternalContactReq));
+    public void handleAddExternalContact(ChangeExternalContactApiVO changeExternalContactApiVO) {
+        log.info("处理添加外部联系人事件回调，参数为：{}", JSONObject.toJSONString(changeExternalContactApiVO));
     }
 
 
     @Async
     @Override
-    public void handleDelExternalContact(ChangeExternalContactReq changeExternalContactReq) {
-        log.info("处理删除企业客户事件事件回调，参数为：{}", JSONObject.toJSONString(changeExternalContactReq));
+    public void handleDelExternalContact(ChangeExternalContactApiVO changeExternalContactApiVO) {
+        log.info("处理删除企业客户事件事件回调，参数为：{}", JSONObject.toJSONString(changeExternalContactApiVO));
     }
 
 
     @Async
     @Override
-    public void handleDelFollowUser(ChangeExternalContactReq changeExternalContactReq) {
-        log.info("处理删除跟进成员事件事件事件回调，参数为：{}", JSONObject.toJSONString(changeExternalContactReq));
+    public void handleDelFollowUser(ChangeExternalContactApiVO changeExternalContactApiVO) {
+        log.info("处理删除跟进成员事件事件事件回调，参数为：{}", JSONObject.toJSONString(changeExternalContactApiVO));
 
     }
 
 
     @Async
     @Override
-    public void handleChangeExternalChat(ChangeExternalChatReq changeExternalChatReq) {
-        log.info("处理群变更回调，参数为：{}", JSONObject.toJSONString(changeExternalChatReq));
+    public void handleChangeExternalChat(ChangeExternalChatApiVO changeExternalChatApiVO) {
+        log.info("处理群变更回调，参数为：{}", JSONObject.toJSONString(changeExternalChatApiVO));
     }
 }

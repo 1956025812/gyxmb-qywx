@@ -5,9 +5,9 @@ import com.gyxmb.qywx.constant.CallbackConstant;
 import com.gyxmb.qywx.service.CallbackService;
 import com.gyxmb.qywx.util.xml.JaxbXmlUtil;
 import com.gyxmb.qywx.vo.common.ResultVO;
-import com.gyxmb.qywx.vo.qywxapi.CallbackVO;
-import com.gyxmb.qywx.vo.qywxapi.ChangeExternalChatReq;
-import com.gyxmb.qywx.vo.qywxapi.ChangeExternalContactReq;
+import com.gyxmb.qywx.vo.qywxapi.CallbackApiVO;
+import com.gyxmb.qywx.vo.qywxapi.ChangeExternalChatApiVO;
+import com.gyxmb.qywx.vo.qywxapi.ChangeExternalContactApiVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -40,33 +40,33 @@ public class CallbackController {
 
     @ApiOperation("处理回调")
     @PostMapping("/handle")
-    public ResultVO handleCallback(@RequestBody CallbackVO callbackVO) {
-        log.info("接收外部回调，参数为：{}", JSONObject.toJSONString(callbackVO));
+    public ResultVO handleCallback(@RequestBody CallbackApiVO callbackApiVO) {
+        log.info("接收外部回调，参数为：{}", JSONObject.toJSONString(callbackApiVO));
 
         try {
-            String event = callbackVO.getEvent();
-            String changeType = callbackVO.getChangeType();
-            String callbackXml = callbackVO.getCallbackXml();
+            String event = callbackApiVO.getEvent();
+            String changeType = callbackApiVO.getChangeType();
+            String callbackXml = callbackApiVO.getCallbackXml();
 
             // 企业客户变更
             if (CallbackConstant.Event.CHANGE_EXTERNAL_CONTACT.getKey().equals(event)) {
-                ChangeExternalContactReq changeExternalContactReq = JaxbXmlUtil.xml2pojo(callbackXml, ChangeExternalContactReq.class);
+                ChangeExternalContactApiVO changeExternalContactApiVO = JaxbXmlUtil.xml2pojo(callbackXml, ChangeExternalContactApiVO.class);
 
                 // 添加企业客户事件(配置了客户联系功能的成员添加外部联系人时，回调该事件)
                 if (CallbackConstant.ChangeType.ADD_EXTERNAL_CONTACT.getKey().equals(changeType)) {
-                    this.callbackService.handleAddExternalContact(changeExternalContactReq);
+                    this.callbackService.handleAddExternalContact(changeExternalContactApiVO);
                     return ResultVO.getSuccess("处理添加企业客户事件成功");
                 }
 
                 // 删除企业客户事件
                 if (CallbackConstant.ChangeType.DEL_EXTERNAL_CONTACT.getKey().equals(changeType)) {
-                    this.callbackService.handleDelExternalContact(changeExternalContactReq);
+                    this.callbackService.handleDelExternalContact(changeExternalContactApiVO);
                     return ResultVO.getSuccess("处理删除企业客户事件成功");
                 }
 
                 // 删除跟进成员事件
                 if (CallbackConstant.ChangeType.DEL_FOLLOW_USER.getKey().equals(changeType)) {
-                    this.callbackService.handleDelFollowUser(changeExternalContactReq);
+                    this.callbackService.handleDelFollowUser(changeExternalContactApiVO);
                     return ResultVO.getSuccess("处理删除跟进成员事件成功");
                 }
 
@@ -74,8 +74,8 @@ public class CallbackController {
 
             // 客户群变更
             if (CallbackConstant.Event.CHANGE_EXTERNAL_CHAT.getKey().equals(event)) {
-                ChangeExternalChatReq changeExternalChatReq = JaxbXmlUtil.xml2pojo(callbackXml, ChangeExternalChatReq.class);
-                this.callbackService.handleChangeExternalChat(changeExternalChatReq);
+                ChangeExternalChatApiVO changeExternalChatApiVO = JaxbXmlUtil.xml2pojo(callbackXml, ChangeExternalChatApiVO.class);
+                this.callbackService.handleChangeExternalChat(changeExternalChatApiVO);
             }
 
         } catch (Exception e) {

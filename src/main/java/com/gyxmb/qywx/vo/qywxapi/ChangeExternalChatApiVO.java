@@ -27,7 +27,7 @@ import java.io.Serializable;
         "Event",
         "ChatId"
 })
-public class ChangeExternalChatReq implements Serializable {
+public class ChangeExternalChatApiVO implements Serializable {
 
     private static final long serialVersionUID = -876183231147266326L;
 
@@ -49,10 +49,10 @@ public class ChangeExternalChatReq implements Serializable {
     @XmlJavaTypeAdapter(CDataAdapter.class)
     private String ChatId;
 
-    public ChangeExternalChatReq() {
+    public ChangeExternalChatApiVO() {
     }
 
-    public ChangeExternalChatReq(String toUserName, String fromUserName, String createTime, String msgType, String event, String chatId) {
+    public ChangeExternalChatApiVO(String toUserName, String fromUserName, String createTime, String msgType, String event, String chatId) {
         ToUserName = toUserName;
         FromUserName = fromUserName;
         CreateTime = createTime;

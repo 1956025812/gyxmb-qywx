@@ -31,7 +31,7 @@ import java.io.Serializable;
         "State",
         "WelcomeCode"
 })
-public class ChangeExternalContactReq implements Serializable {
+public class ChangeExternalContactApiVO implements Serializable {
 
     private static final long serialVersionUID = -5498804447890972188L;
 
@@ -65,10 +65,10 @@ public class ChangeExternalContactReq implements Serializable {
     @XmlJavaTypeAdapter(CDataAdapter.class)
     private String WelcomeCode;
 
-    public ChangeExternalContactReq() {
+    public ChangeExternalContactApiVO() {
     }
 
-    public ChangeExternalContactReq(String toUserName, String fromUserName, String createTime, String msgType, String event, String changeType, String userID, String externalUserID, String state, String welcomeCode) {
+    public ChangeExternalContactApiVO(String toUserName, String fromUserName, String createTime, String msgType, String event, String changeType, String userID, String externalUserID, String state, String welcomeCode) {
         ToUserName = toUserName;
         FromUserName = fromUserName;
         CreateTime = createTime;

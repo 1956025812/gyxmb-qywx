@@ -14,7 +14,7 @@ import java.util.List;
  * @since 2020-04-12 18:05
  */
 @Data
-public class DepartmentApiResultVO implements Serializable {
+public class DepartmentResultApiVO implements Serializable {
 
     private static final long serialVersionUID = 494033000438423195L;
 

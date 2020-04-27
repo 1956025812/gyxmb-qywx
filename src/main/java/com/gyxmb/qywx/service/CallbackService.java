@@ -1,7 +1,7 @@
 package com.gyxmb.qywx.service;
 
-import com.gyxmb.qywx.vo.qywxapi.ChangeExternalChatReq;
-import com.gyxmb.qywx.vo.qywxapi.ChangeExternalContactReq;
+import com.gyxmb.qywx.vo.qywxapi.ChangeExternalChatApiVO;
+import com.gyxmb.qywx.vo.qywxapi.ChangeExternalContactApiVO;
 
 /**
  * <p>
@@ -16,32 +16,32 @@ public interface CallbackService {
     /**
      * 处理添加企业客户事件
      *
-     * @param changeExternalContactReq 添加企业客户事件回调参数
+     * @param changeExternalContactApiVO 添加企业客户事件回调参数
      */
-    void handleAddExternalContact(ChangeExternalContactReq changeExternalContactReq);
+    void handleAddExternalContact(ChangeExternalContactApiVO changeExternalContactApiVO);
 
 
     /**
      * 删除企业客户事件
      *
-     * @param changeExternalContactReq 删除企业客户事件回调参数
+     * @param changeExternalContactApiVO 删除企业客户事件回调参数
      */
-    void handleDelExternalContact(ChangeExternalContactReq changeExternalContactReq);
+    void handleDelExternalContact(ChangeExternalContactApiVO changeExternalContactApiVO);
 
 
     /**
      * 删除跟进成员事件
      *
-     * @param changeExternalContactReq 删除跟进成员事件回调参数
+     * @param changeExternalContactApiVO 删除跟进成员事件回调参数
      */
-    void handleDelFollowUser(ChangeExternalContactReq changeExternalContactReq);
+    void handleDelFollowUser(ChangeExternalContactApiVO changeExternalContactApiVO);
 
 
     /**
      * 客户群变更事件
      *
-     * @param changeExternalChatReq 客户群变更事件回调参数对象
+     * @param changeExternalChatApiVO 客户群变更事件回调参数对象
      */
-    void handleChangeExternalChat(ChangeExternalChatReq changeExternalChatReq);
+    void handleChangeExternalChat(ChangeExternalChatApiVO changeExternalChatApiVO);
 
 }

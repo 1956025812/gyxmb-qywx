@@ -8,7 +8,7 @@ import com.gyxmb.qywx.service.QywxApiService;
 import com.gyxmb.qywx.util.RedisKeyBuilder;
 import com.gyxmb.qywx.util.RedisUtil;
 import com.gyxmb.qywx.vo.qywxapi.AccessTokenApiVO;
-import com.gyxmb.qywx.vo.qywxapi.DepartmentApiResultVO;
+import com.gyxmb.qywx.vo.qywxapi.DepartmentResultApiVO;
 import com.gyxmb.qywx.vo.qywxapi.DepartmentApiVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -51,13 +51,13 @@ public class QywxApiServiceImpl implements QywxApiService {
         String result = HttpUtil.get(url);
         log.info("获取部门及其子部门列表返回的调用结果为：{}", result);
         result = result.replaceAll("name_en", "nameEn").replaceAll("parentid", "parentId");
-        DepartmentApiResultVO departmentApiResultVO = JSONUtil.toBean(result, DepartmentApiResultVO.class);
-        if (null == departmentApiResultVO || !QywxCodeEnum.SUCCESS.getKey().equals(departmentApiResultVO.getErrcode())) {
-            log.error("获取部门及其子部门列表失败，参数为：[deptId= {}], 失败信息为：{}", deptId, QywxCodeEnum.acquireValue(departmentApiResultVO.getErrcode()));
+        DepartmentResultApiVO departmentResultApiVO = JSONUtil.toBean(result, DepartmentResultApiVO.class);
+        if (null == departmentResultApiVO || !QywxCodeEnum.SUCCESS.getKey().equals(departmentResultApiVO.getErrcode())) {
+            log.error("获取部门及其子部门列表失败，参数为：[deptId= {}], 失败信息为：{}", deptId, QywxCodeEnum.acquireValue(departmentResultApiVO.getErrcode()));
             return null;
         }
 
-        return departmentApiResultVO.getDepartment();
+        return departmentResultApiVO.getDepartment();
     }
 
 
